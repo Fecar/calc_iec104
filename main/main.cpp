@@ -10,7 +10,7 @@ void menu() {
 
   while (!val_op) {
     std::string s_op;
-    std::cout << "****************** Bem Vindo! ******************" << '\n';
+    std::cout << "****************** Welcome! ******************" << '\n';
     std::cout << "Opcoes do programa:" << '\n';
     std::cout << "[1] Calcular o IOA DECIMAL para 3 OCTETOS" << '\n';
     std::cout << "[2] Calcular 3 OCTETOS para IOA DECIMAL" << '\n';
