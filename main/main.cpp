@@ -1,6 +1,6 @@
 #include <iostream>
 // #include <sstream>
-#include <cctype>
+// #include <cctype>
 #include <unistd.h>
 
 int op;
@@ -24,15 +24,13 @@ void menu() {
                  "Enter the option: ";
     std::getline(std::cin, s_op);
 
-    if (!s_op.empty() &&
-        s_op.find_first_not_of("0123456789") == std::string::npos) {
+    if (!s_op.empty() && s_op.find_first_not_of("0123456789") == std::string::npos) {
       try {
         op = std::stoi(s_op);
         val_op = true;
         system("clear");
       } catch (const std::out_of_range &e) {
-        std::cout << "Erro: " << e.what() << "\nNumber out of range."
-                  << std::endl;
+        std::cout << "Erro: " << e.what() << "\nNumber out of range." << std::endl;
         sleep(3);
         system("clear");
       }
@@ -94,8 +92,7 @@ void calc_ioa_dec(std::string str1, std::string str2, std::string str3) {
   num3 = std::stoull(str3);
 
   // Imprime os IOA Decimal na tela
-  std::cout << "The Decimal IOA is: " << (num3 * 35536) + (num2 * 256) + (num1)
-            << '\n';
+  std::cout << "The Decimal IOA is: " << (num3 * 35536) + (num2 * 256) + (num1) << '\n';
 }
 
 // Função que calcula o ASDU
@@ -129,8 +126,7 @@ int main() // Função principal
     menu();
     if (op != 0) {
       std::string s_addr104, s_ioa1, s_ioa2, s_ioa3, s_asdu, s_casdu1, s_casdu2;
-      bool val_case1{false}, val_case2{false}, val_case3{false},
-          val_case4{false};
+      bool val_case1{false}, val_case2{false}, val_case3{false}, val_case4{false};
 
       switch (op) {
       case 1:
@@ -149,8 +145,7 @@ int main() // Função principal
             std::cin.get();
             system("clear");
           } else {
-            std::cout << "\nOnly enter numbers between 0 and 65535 for ADDR104!"
-                      << '\n';
+            std::cout << "\nOnly enter numbers between 0 and 65535 for ADDR104!" << '\n';
             sleep(3);
             system("clear");
           }
@@ -174,12 +169,11 @@ int main() // Função principal
             // Função de Calculo
 
             calc_ioa_dec(s_ioa1, s_ioa2, s_ioa3);
-            std::cout << "\nPressione Enter para continuar ...:";
+            std::cout << "\nPress Enter to continue ...:";
             std::cin.get();
             system("clear");
           } else {
-            std::cout << "Digite apenas NUMEROS entre 0 ... 255 para os IOAs!!!"
-                      << '\n';
+            std::cout << "Enter only numbers between 0 and 255 for IOAs!" << '\n';
             sleep(2);
             system("clear");
           }
@@ -190,7 +184,7 @@ int main() // Função principal
         // Aqui realiza o laço de repetição para tratar os numeros gerado pelo
         // usuario.
         while (!val_case3) {
-          std::cout << "Digite o ASDU (0 ... 65535): ";
+          std::cout << "Enter the ASDU (0 ... 65535): ";
           std::getline(std::cin, s_asdu);
 
           if (check_dec(s_asdu)) {
@@ -198,12 +192,11 @@ int main() // Função principal
 
             // Função de Calculo
             calc_asdu(s_asdu);
-            std::cout << "\nPressione Enter para continuar ...:";
+            std::cout << "\nPress Enter to continue ...:";
             std::cin.get();
             system("clear");
           } else {
-            std::cout << "Digite apenas Numeros entre 0 e 65535 para o ASDU!"
-                      << '\n';
+            std::cout << "Enter only numbers between 0 e 65535 for ASDU!" << '\n';
             sleep(2);
             system("clear");
           }
@@ -211,12 +204,12 @@ int main() // Função principal
 
         break;
       case 4:
-        // Aqui realiza o laço de repetição para tratar os numeros gerado pelo
+        // Aqui realiza o laço de repetição para tratar os numeros gerado
         // usuario.
         while (!val_case4) {
-          std::cout << "Digite o CASDU1 (0 ... 255): ";
+          std::cout << "Enter the CASDU1 (0 ... 255): ";
           std::getline(std::cin, s_casdu1);
-          std::cout << "Digite o CASDU2 (0 ... 255): ";
+          std::cout << "Enter the CASDU2 (0 ... 255): ";
           std::getline(std::cin, s_casdu2);
 
           if (check_dec(s_casdu1) && check_dec(s_casdu2)) {
@@ -224,12 +217,11 @@ int main() // Função principal
 
             // Função de Calculo
             calc_casdu(s_casdu1, s_casdu2);
-            std::cout << "\nPressione Enter para continuar ...:";
+            std::cout << "\nPress Enter to continue ...:";
             std::cin.get();
             system("clear");
           } else {
-            std::cout
-                << "Digite apenas NUMEROS entre 0 e 255 para os CASDUs!!!";
+            std::cout << "Enter only numbers between 0 e 255 for CASDUs!!!";
             sleep(2);
             system("clear");
           }
@@ -237,14 +229,14 @@ int main() // Função principal
 
         break;
       default:
-        std::cout << "Digite apenas as opcoes:" << '\n';
-        std::cout << "[1] ou [2] ou [3] ou [4] ou [0]" << '\n';
+        std::cout << "Enter only the options below:" << '\n';
+        std::cout << "[1] or [2] or [3] or [4] or [0]" << '\n';
         sleep(2);
         system("clear");
         break;
       }
     } else {
-      std::cout << "Deseja realmente sair ? [Y/n]: ";
+      std::cout << "Do you really want to leave ? [Y/n]: ";
       std::cin >> out;
       std::cin.ignore();
       out = toupper(out);
@@ -253,11 +245,11 @@ int main() // Função principal
         system("clear");
       } else if (out == 'Y') {
         run = false;
-        std::cout << "\nVou sentir saudades =( \n\nSee you later!!!!" << '\n';
+        std::cout << "\nI will miss you =( \n\nSee you later!!!!" << '\n';
         sleep(1);
       } else {
         system("clear");
-        std::cout << "Digite Apenas 'Y' ou 'n' ..." << '\n';
+        std::cout << "Enter only 'Y' or 'n' ..." << '\n';
         sleep(3);
       }
     }
@@ -265,4 +257,3 @@ int main() // Função principal
 
   return 0;
 }
-
