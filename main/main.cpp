@@ -56,7 +56,7 @@ bool valid_numb(std::string str) {
 // Função de validação de dados, valida se o numero está entre 0 e 255
 bool check_oct(std::string str) {
   int x = std::stoull(str);
-  return x >= 0 && x <= 255 && valid_numb(str);
+  return (x >= 0 && x <= 255) && valid_numb(str);
 }
 
 // Função de validação de dados, valida se o numero está entre 0 e 65535
@@ -120,8 +120,7 @@ void calc_casdu(std::string str1, std::string str2) {
   std::cout << "The ASDU is: " << (num2 * 256) + (num1) << '\n';
 }
 
-int main() // Função principal
-{
+int main() {
   do {
     menu();
     if (op != 0) {
@@ -130,13 +129,12 @@ int main() // Função principal
 
       switch (op) {
       case 1:
-        // Aqui realiza o laço de repetição para tratar os numeros gerado pelo
-        // usuario.
+        // Aqui realiza o laço de repetição para tratar os numeros gerado pelo usuario.
         while (!val_case1) {
           std::cout << "Enter the Decimal IOA (0 to 65535): ";
           std::getline(std::cin, s_addr104);
 
-          if (check_dec(s_addr104)) {
+          if (check_dec(s_addr104) && valid_numb(s_addr104)) {
             val_case1 = true;
 
             // Função de Calculo
@@ -154,8 +152,7 @@ int main() // Função principal
         break;
 
       case 2:
-        // Aqui realiza o laço de repetição para tratar os numeros gerado pelo
-        // usuario.
+        // Aqui realiza o laço de repetição para tratar os numeros gerado pelo usuario.
         while (!val_case2) {
           std::cout << "Enter the IOA1 (0 ... 255): ";
           std::getline(std::cin, s_ioa1);
@@ -164,7 +161,11 @@ int main() // Função principal
           std::cout << "Enter the IOA3 (0 ... 255): ";
           std::getline(std::cin, s_ioa3);
 
-          if (check_oct(s_ioa1) && check_oct(s_ioa2) && check_oct(s_ioa3)) {
+          bool var1;
+
+          var1 = check_oct(s_ioa1) && check_oct(s_ioa2) && check_oct(s_ioa3);
+
+          if (var1) {
             val_case2 = true;
             // Função de Calculo
 
@@ -181,8 +182,7 @@ int main() // Função principal
 
         break;
       case 3:
-        // Aqui realiza o laço de repetição para tratar os numeros gerado pelo
-        // usuario.
+        // Aqui realiza o laço de repetição para tratar os numeros gerado pelo usuario.
         while (!val_case3) {
           std::cout << "Enter the ASDU (0 ... 65535): ";
           std::getline(std::cin, s_asdu);
@@ -204,8 +204,7 @@ int main() // Função principal
 
         break;
       case 4:
-        // Aqui realiza o laço de repetição para tratar os numeros gerado
-        // usuario.
+        // Aqui realiza o laço de repetição para tratar os numeros gerado usuario.
         while (!val_case4) {
           std::cout << "Enter the CASDU1 (0 ... 255): ";
           std::getline(std::cin, s_casdu1);
